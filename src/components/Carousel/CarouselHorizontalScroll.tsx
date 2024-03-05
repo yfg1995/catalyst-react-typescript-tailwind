@@ -14,13 +14,11 @@ export const CarouselHorizontalScroll: FC<ICarouselHorizontalScroll> = ({
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+
   return (
     <section ref={targetRef} className="h-[200vh]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div
-          style={{ x }}
-          className="flex gap-x-5 absolute top-1/2 left-2/3 -translate-x-1/2 -translate-y-1/2"
-        >
+        <motion.div style={{ x }} className="flex gap-x-5">
           {children}
         </motion.div>
       </div>

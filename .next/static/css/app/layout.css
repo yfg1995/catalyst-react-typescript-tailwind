@@ -559,9 +559,6 @@ video {
 .left-1\/2 {
   left: 50%;
 }
-.left-2\/3 {
-  left: 66.666667%;
-}
 .left-\[45\%\] {
   left: 45%;
 }
@@ -1527,6 +1524,9 @@ video {
 }
 .duration-300 {
   transition-duration: 300ms;
+}
+.duration-\[400\] {
+  transition-duration: 400;
 }
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

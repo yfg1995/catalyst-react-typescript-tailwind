@@ -1,10 +1,10 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren, useState } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
 import { DownArrow } from "@/svg/DownArrow";
-import useDropdownActiveState from "@/hooks/useDropdownActiveState";
 import { AnimationCollapsedMotion } from "../FramerMotion/AnimationCollapsedMotion";
+import { useDropdownActiveState } from "@/zustand/useDropdownActiveState";
 
 export interface IDropdown extends PropsWithChildren {
   title: string;
@@ -26,29 +26,41 @@ export const Dropdown: FC<IDropdown> = ({
   link = "/",
   children,
 }) => {
-  const [isHoveredDropdown, setIsHoveredDropdown] = useDropdownActiveState();
+  const [isHovered, setIsHovered] = useState(false);
+
+  const setIsHoveredDropdown = useDropdownActiveState(
+    (state) => state.setIsHovered
+  );
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setIsHoveredDropdown(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setIsHoveredDropdown(false);
+  };
 
   return (
     <div
       className={cn("cursor-pointer", isMenuFull ? "" : "relative")}
-      onMouseEnter={() => setIsHoveredDropdown(true)}
-      onMouseLeave={() => setIsHoveredDropdown(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className={cn("flex items-center", className)}>
         <Link className={cn("py-[28px] mr-1", classNameMenuTitle)} href={link}>
           {title}
         </Link>
-
         <DownArrow
           svgClassName={cn(
             "h-6 w-6",
             classNameArrowBtn,
-            isHoveredDropdown ? "rotate-180 translate-y-[2px]" : ""
+            isHovered ? "rotate-180 translate-y-[2px]" : ""
           )}
         />
-
         <AnimatePresence>
-          {isHoveredDropdown && (
+          {isHovered && (
             <AnimationCollapsedMotion
               className={cn(
                 "absolute top-full bg-white z-50 font-medium py-2",
