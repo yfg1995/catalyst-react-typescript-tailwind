@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #00586f;
+  --clr-green: #b3d24b;
+  --clr-cyan: #22aed1;
+  --clr-gold: #fec52e;
+  --clr-salmon: #eb6852;
+  --clr-light-blue: #ebfbff;
+  --clr-light-gold: #fff5df;
+  --clr-light-green: #faffec;
+}
