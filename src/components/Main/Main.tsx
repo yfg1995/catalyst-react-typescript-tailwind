@@ -20,7 +20,7 @@ export const Main: FC<IMain> = ({ children, className }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.7 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed top-0 left-0 h-full w-full bg-[var(--bg-primary)] z-40"
           />
         )}

@@ -8,7 +8,7 @@ export interface IAnimationCollapsedMotion extends PropsWithChildren {
 
 export const AnimationCollapsedMotion: FC<IAnimationCollapsedMotion> = ({
   className,
-  duration = 0.4,
+  duration = 0.3,
   children,
 }) => {
   return (

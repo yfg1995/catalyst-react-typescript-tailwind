@@ -46,7 +46,7 @@ export const SelectDropdown: FC<ISelect> = ({
     <div className="relative cursor-pointer">
       <div
         className={cn(
-          "relative flex justify-between items-center p-2.5 text-lg w-full border-slate-400 border rounded-lg",
+          "relative flex justify-between items-center p-2.5 text-lg w-full border-slate-400 border rounded-tl-lg rounded-tr-lg",
           className
         )}
         onClick={handleToggle}
@@ -64,7 +64,7 @@ export const SelectDropdown: FC<ISelect> = ({
       {toggle && (
         <div
           className={cn(
-            "absolute top-full left-0 border border-slate-400 w-full -mt-[1px] z-10 rounded-l-lg overflow-x-auto max-h-[var(--item-height)] divide-y divide-y-slate-400",
+            "absolute top-full left-0 border border-slate-400 w-full -mt-[1px] z-10 rounded-bl-lg  overflow-x-auto max-h-[var(--item-height)] divide-y divide-y-slate-400",
             className
           )}
           style={{ "--item-height": `${itemHeight * 5}px` } as CSSProperties}

@@ -102,7 +102,7 @@ export const CarouselDragFree: FC<ICarouselDragFree> = ({
               "rounded-full border-2 p-3.5",
               bgHoverColor,
               currentIndex === 0
-                ? "pointer-events-none !border-inherit !bg-inherit"
+                ? "pointer-events-none !border-inherit hover:!bg-inherit"
                 : "cursor-pointer"
             )}
             style={{ borderColor: borderColor }}
@@ -116,7 +116,7 @@ export const CarouselDragFree: FC<ICarouselDragFree> = ({
               "rounded-full border-2 p-3.5",
               bgHoverColor,
               currentIndex === slides.length - 1
-                ? "pointer-events-none !border-inherit !bg-inherit"
+                ? "pointer-events-none !border-inherit hover:!bg-inherit"
                 : "cursor-pointer"
             )}
             style={{ borderColor: borderColor }}
