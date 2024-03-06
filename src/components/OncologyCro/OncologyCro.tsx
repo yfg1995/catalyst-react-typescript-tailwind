@@ -8,11 +8,11 @@ import { OncologyTherapyStudies } from "./OncologyTherapyStudies";
 export function OncologyCro() {
   return (
     <>
-      <OncologyTherapyStudies />
       <OncologyCroHero />
       <OncologyCroServicesCards />
       <OncologyResearch />
       <OncologyCroTestimonials />
+      <OncologyTherapyStudies />
       <OncologyLatestInsights />
     </>
   );

@@ -18,9 +18,7 @@ export const CarouselHorizontalScroll: FC<ICarouselHorizontalScroll> = ({
   return (
     <section ref={targetRef} className="h-[200vh]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-x-5">
-          {children}
-        </motion.div>
+        <motion.div style={{ x }}>{children}</motion.div>
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ export const CarouselStatisticsCard: FC<ICarouselStatisticsCard> = ({
       {card.map((item, index) => (
         <div
           key={index}
-          className="overflow-hidden rounded-[30px] max-w-[330px] w-full py-[50px] px-[20px] h-auto text-center select-none"
+          className="overflow-hidden rounded-[30px] max-w-[330px] w-full py-[50px] px-[20px] h-auto text-center select-none ease-in-out"
           style={{ background: bgColor, flex: "0 0 100%" }}
         >
           <div className="text-[50px] leading-[1.25] -tracking-[0.5px] mb-[10px]">

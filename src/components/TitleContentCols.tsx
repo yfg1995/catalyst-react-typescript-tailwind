@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Button } from "./Button";
 import { HeadingTitleRows } from "./HeadingTitleRows";
 import { InView } from "./FramerMotion/InView";
+import { cn } from "@/lib/utils";
 
 export interface ITitleContentCols {
   titleFirstRow: string;
@@ -9,6 +10,7 @@ export interface ITitleContentCols {
   titleThirdRow?: string;
   description: string;
   btnTitle: string;
+  className?: string;
   classNameTitle?: string;
 }
 
@@ -18,10 +20,11 @@ export const TitleContentCols: FC<ITitleContentCols> = ({
   titleThirdRow,
   description,
   btnTitle,
+  className,
   classNameTitle,
 }) => {
   return (
-    <div className="flex justify-between items-center">
+    <div className={cn("flex justify-between items-center mb-20", className)}>
       <HeadingTitleRows
         className={classNameTitle}
         firstRow={titleFirstRow}

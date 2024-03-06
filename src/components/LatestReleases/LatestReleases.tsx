@@ -61,12 +61,14 @@ export const LatestReleases: FC<ILatestReleases> = () => {
           </InView>
 
           <InView delay={0.2} classNameWrap="overflow-hidden">
-            <Button
-              title="View All"
-              rightArrow={true}
-              className="mt-8 text-white"
-              classNameSvg="fill-white"
-            />
+            <Link href="/">
+              <Button
+                title="View All"
+                rightArrow={true}
+                className="mt-8 text-white"
+                classNameSvg="fill-white"
+              />
+            </Link>
           </InView>
         </div>
       </Container>

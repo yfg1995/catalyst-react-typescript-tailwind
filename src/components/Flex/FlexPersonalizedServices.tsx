@@ -44,7 +44,7 @@ export const FlexPersonalizedServices: FC<IFlexPersonalizedServices> = () => {
           btnTitle="Find Out More"
         />
 
-        <div className="flex flex-wrap gap-x-10 gap-y-20 mt-20">
+        <div className="flex flex-wrap gap-x-10 gap-y-20">
           {flexClinicalResearchServicesData.map((item, index) => (
             <InView
               key={index}

@@ -12,7 +12,7 @@ export const TitleContentCenter: FC<ITitleContentCenter> = ({
   description,
 }) => {
   return (
-    <div className="text-center flex flex-col mx-auto text-white max-w-[775px] w-full mb-[20px]">
+    <div className="text-center flex flex-col mx-auto text-white max-w-[775px] w-full mb-[40px]">
       <InView classNameWrap="overflow-hidden">
         <Heading title={title} />
       </InView>
