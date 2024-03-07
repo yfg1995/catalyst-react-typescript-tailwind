@@ -4,6 +4,7 @@ import { FC, PropsWithChildren } from "react";
 import { ScrollComponent } from "./ScrollComponent";
 import { cn } from "@/lib/utils";
 import { Section } from "./Section";
+import { useSegmentPath } from "@/context/SegmentPathContext";
 
 export interface IDecorBgSection extends PropsWithChildren {
   rightCircle?: boolean;
@@ -13,11 +14,27 @@ export const DecorBgSection: FC<IDecorBgSection> = ({
   children,
   rightCircle = false,
 }) => {
+  const { firstSegment } = useSegmentPath();
+
+  const bgColor =
+    firstSegment === "oncology-cro"
+      ? "var(--clr-cyan)"
+      : firstSegment === "catalyst-flex"
+      ? "var(--clr-green)"
+      : "var(--clr-gold)";
+
+  const bgSectionColor =
+    firstSegment === "oncology-cro"
+      ? "bg-[var(--clr-light-cyan)]"
+      : firstSegment === "catalyst-flex"
+      ? "bg-[var(--clr-light-green)]"
+      : "bg-[var(--clr-light-gold)]";
+
   return (
     <Section
       className={cn(
-        "bg-[var(--clr-light-blue)]",
-        rightCircle ? "rounded-tr-[120px]" : "rounded-tl-[120px]"
+        rightCircle ? "rounded-tr-[120px]" : "rounded-tl-[120px]",
+        bgSectionColor
       )}
     >
       <div
@@ -42,9 +59,10 @@ export const DecorBgSection: FC<IDecorBgSection> = ({
       >
         <div
           className={cn(
-            "bg-[var(--clr-cyan)] rounded-full aspect-[1] absolute bottom-auto w-full",
+            "rounded-full aspect-[1] absolute bottom-auto w-full",
             rightCircle ? "right-0" : "left-0"
           )}
+          style={{ background: bgColor }}
         />
       </ScrollComponent>
 

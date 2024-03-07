@@ -541,12 +541,6 @@ video {
 .relative {
   position: relative;
 }
-.sticky {
-  position: sticky;
-}
-.\!sticky {
-  position: sticky !important;
-}
 .bottom-0 {
   bottom: 0px;
 }
@@ -594,12 +588,6 @@ video {
 }
 .top-full {
   top: 100%;
-}
-.left-auto {
-  left: auto;
-}
-.\!top-0 {
-  top: 0px !important;
 }
 .z-10 {
   z-index: 10;
@@ -661,9 +649,6 @@ video {
 }
 .mb-8 {
   margin-bottom: 2rem;
-}
-.mb-\[10px\] {
-  margin-bottom: 10px;
 }
 .mb-\[20px\] {
   margin-bottom: 20px;
@@ -790,9 +775,6 @@ video {
 }
 .h-full {
   height: 100%;
-}
-.h-screen {
-  height: 100vh;
 }
 .max-h-\[var\(--item-height\)\] {
   max-height: var(--item-height);
@@ -1222,6 +1204,13 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-\[var\(--clr-light-cyan\)\] {
+  background-color: var(--clr-light-cyan);
+}
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 .fill-\[var\(--bg-primary\)\] {
   fill: var(--bg-primary);
