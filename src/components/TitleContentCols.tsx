@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export interface ITitleContentCols {
   titleFirstRow: string;
-  titleSecondRow: string;
+  titleSecondRow?: string;
   titleThirdRow?: string;
   description: string;
   btnTitle: string;

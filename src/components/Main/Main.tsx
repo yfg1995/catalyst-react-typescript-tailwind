@@ -25,6 +25,7 @@ export const Main: FC<IMain> = ({ children, className }) => {
           />
         )}
       </AnimatePresence>
+
       {children}
     </main>
   );

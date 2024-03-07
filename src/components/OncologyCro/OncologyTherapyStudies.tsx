@@ -12,19 +12,19 @@ export interface IOncologyTherapyStudies {}
 
 const therapyStudiesStatisticsData = [
   {
-    number: 150,
+    number: "150+",
     description: "full-service oncology projects",
   },
   {
-    number: 18,
+    number: "18+",
     description: "years of experience with oncology trials",
   },
   {
-    number: 5,
+    number: "5+",
     description: "years of oncology experience per core team member",
   },
   {
-    number: 1000,
+    number: "1,000+",
     description: "staff across the globe in 25+ countries",
   },
 ];
@@ -33,16 +33,14 @@ export const OncologyTherapyStudies: FC<IOncologyTherapyStudies> = () => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    // offset: ["start end", "end start"],
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["25%", "-100%"]);
 
   return (
-    <section
-      ref={targetRef}
-      className="2xl:py-[170px] xl:py-[140px] w-full overflow-hidden h-[200vh]"
-    >
-      <Container className="sticky top-0 h-screen overflow-hidden">
+    <section className="2xl:py-[170px] xl:py-[140px] w-full overflow-hidden h-[200vh]">
+      <Container>
         <TitleContentCols
           classNameTitle="!text-[45px] !-tracking-[0.45] max-w-[50%] w-full"
           titleFirstRow="Accelerate Oncology Therapy"

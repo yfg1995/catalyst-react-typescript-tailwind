@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export interface IHeadingTitleRows {
   firstRow: string;
-  secondRow: string;
+  secondRow?: string;
   thirdRow?: string;
   className?: string;
 }

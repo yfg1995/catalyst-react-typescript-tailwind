@@ -1,1 +1,4 @@
-{}
+{
+  "/catalyst-flex/page": "app/catalyst-flex/page.js",
+  "/oncology-cro/page": "app/oncology-cro/page.js"
+}
