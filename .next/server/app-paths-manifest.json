@@ -1,6 +1,8 @@
 {
   "/page": "app/page.js",
-  "/catalyst-flex/page": "app/catalyst-flex/page.js",
-  "/oncology-cro/page": "app/oncology-cro/page.js",
-  "/oncology-cro/contact-oncology/page": "app/oncology-cro/contact-oncology/page.js"
+  "/our-purpose/page": "app/our-purpose/page.js",
+  "/our-board/page": "app/our-board/page.js",
+  "/our-partners/page": "app/our-partners/page.js",
+  "/our-people/page": "app/our-people/page.js",
+  "/contact-us/page": "app/contact-us/page.js"
 }

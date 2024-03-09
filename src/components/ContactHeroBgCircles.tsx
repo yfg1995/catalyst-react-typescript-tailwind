@@ -28,7 +28,7 @@ export const ContactHeroBgCircles: FC<IContactHeroBgCircles> = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.3, ease: "easeInOut", delay: 0.2 }}
+        transition={{ duration: 1.2, ease: "easeInOut", delay: 0.65 }}
         className="absolute top-0 left-0 w-[316px] -translate-x-1/2 -translate-y-1/2 aspect-square"
       >
         <div
@@ -40,7 +40,7 @@ export const ContactHeroBgCircles: FC<IContactHeroBgCircles> = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.3, ease: "easeInOut", delay: 0.7 }}
+        transition={{ duration: 1.2, ease: "easeInOut", delay: 0.85 }}
         className="absolute top-full left-full w-[430px] -translate-x-1/2 -translate-y-1/2 aspect-square"
       >
         <div

@@ -64,7 +64,7 @@ export const SelectDropdown: FC<ISelect> = ({
       {toggle && (
         <div
           className={cn(
-            "absolute top-full left-0 border border-slate-400 w-full -mt-[1px] z-10 rounded-bl-lg  overflow-x-auto max-h-[var(--item-height)] divide-y divide-y-slate-400",
+            "absolute top-full left-0 border border-slate-400 w-full -mt-[1px] z-10 rounded-bl-lg  overflow-x-auto max-h-[var(--item-height)] divide-y divide-y-slate-400 duration-500 ease-in-out",
             className
           )}
           style={{ "--item-height": `${itemHeight * 5}px` } as CSSProperties}

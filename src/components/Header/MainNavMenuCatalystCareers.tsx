@@ -4,7 +4,10 @@ import { RightArrow } from "@/svg/RightArrow";
 import { AnimationOpacityMotion } from "../FramerMotion/AnimationOpacityMotion";
 import { AnimatePresence } from "framer-motion";
 
-const careersData = [{ value: "Our Culture", path: "/culture" }];
+const careersData = [
+  { value: "Current Openings", path: "/" },
+  { value: "Our Culture", path: "/culture" },
+];
 
 export const MainNavMenuCatalystCarrers: FC = () => {
   return (
@@ -15,7 +18,7 @@ export const MainNavMenuCatalystCarrers: FC = () => {
             key={index}
             className="group flex py-2 cursor-pointer items-center"
           >
-            <AnimationOpacityMotion delay={index * 0.06}>
+            <AnimationOpacityMotion useExit delay={index * 0.06}>
               <Link href={item.path}>{item.value}</Link>
             </AnimationOpacityMotion>
 

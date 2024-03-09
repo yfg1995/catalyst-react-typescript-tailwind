@@ -28,7 +28,7 @@ export const MainNavMenuOncology: FC = () => {
             key={index}
             className="group flex py-2 cursor-pointer items-center"
           >
-            <AnimationOpacityMotion delay={index * 0.06}>
+            <AnimationOpacityMotion useExit delay={index * 0.06}>
               <Link href={item.path}>{item.value}</Link>
             </AnimationOpacityMotion>
 

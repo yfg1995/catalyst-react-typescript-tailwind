@@ -39,8 +39,11 @@ export const OncologyTherapyStudies: FC<IOncologyTherapyStudies> = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["25%", "-100%"]);
 
   return (
-    <section className="2xl:py-[170px] xl:py-[140px] w-full overflow-hidden h-[200vh]">
-      <Container ref={targetRef} className="sticky top-0 z-50">
+    <section
+      ref={targetRef}
+      className="2xl:py-[170px] xl:py-[140px] w-full overflow-hidden h-[200vh]"
+    >
+      <Container className="sticky top-0 z-50">
         <TitleContentCols
           classNameTitle="!text-[45px] !-tracking-[0.45] max-w-[50%] w-full"
           titleFirstRow="Accelerate Oncology Therapy"
