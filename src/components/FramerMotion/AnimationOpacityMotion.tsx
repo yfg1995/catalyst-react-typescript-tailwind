@@ -17,6 +17,7 @@ export const AnimationOpacityMotion: FC<IAnimationOpacityMotion> = ({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration, delay }}
       className={className}
     >

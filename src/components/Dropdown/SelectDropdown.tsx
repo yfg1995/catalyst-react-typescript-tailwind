@@ -71,12 +71,12 @@ export const SelectDropdown: FC<ISelect> = ({
         >
           {options.map((option) => (
             <div
-              className="flex justify-center items-center cursor-pointer transition hover:!bg-[var(--clr-cyan)] hover:text-white"
+              className="flex justify-center items-center cursor-pointer transition hover:!bg-[var(--bg-primary)] hover:text-white"
               key={option.id}
               style={{
                 color: selectedId === option.id ? "white" : "",
                 background:
-                  selectedId === option.id ? "var(--clr-cyan)" : "white",
+                  selectedId === option.id ? "var(--bg-primary)" : "white",
                 height: `${itemHeight}px`,
               }}
               onClick={handleSelect(option.id)}

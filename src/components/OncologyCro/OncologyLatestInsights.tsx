@@ -4,6 +4,7 @@ import { Heading } from "../Heading";
 import { InView } from "../FramerMotion/InView";
 import { CardIconImg } from "../CardIconImg";
 import { Container } from "../Container";
+import { HeadingTitleRows } from "../HeadingTitleRows";
 
 export interface IOncologyLatestInsights {}
 
@@ -29,7 +30,7 @@ export const OncologyLatestInsights: FC<IOncologyLatestInsights> = () => {
     <DecorBgSection rightCircle>
       <Container>
         <InView className="text-center mb-[70px] text-white">
-          <Heading title="Discover the Latest Insights" />
+          <HeadingTitleRows firstRow="Discover the Latest Insights" />
         </InView>
 
         <div className="flex gap-x-5 [&>*]:max-w-[50%]">
