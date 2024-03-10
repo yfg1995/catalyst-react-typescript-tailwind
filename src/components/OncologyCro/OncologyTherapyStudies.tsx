@@ -52,7 +52,7 @@ export const OncologyTherapyStudies: FC<IOncologyTherapyStudies> = () => {
           btnTitle="Read More"
         />
 
-        <div className="relative max-w-[450px] w-full h-[510px] aspect-square">
+        <div className="relative max-w-[450px] w-full h-[510px] aspect-square overflow-hidden">
           <Image
             className="rounded-lg object-cover w-full"
             src="/images/oncology-therapy-studies-carousel.jpg"

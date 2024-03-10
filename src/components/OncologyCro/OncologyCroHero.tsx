@@ -40,10 +40,10 @@ export const OncologyCroHero: FC<IOncologyCroHero> = () => {
 
           <InView
             animateFrom="right"
-            className="relative max-w-[640px] w-full h-[455px] aspect-[1.41] right-[-130px]"
+            className="relative max-w-[640px] w-full h-[455px] aspect-[1.41] right-[-130px] rounded-[20px] overflow-hidden"
           >
             <Image
-              className="object-cover w-full rounded-[20px]"
+              className="object-cover w-full"
               src="/images/oncology-hero.jpg"
               alt=""
               fill

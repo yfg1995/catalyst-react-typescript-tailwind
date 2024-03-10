@@ -39,8 +39,11 @@ export const FlexExpertise: FC<IFlexExpertise> = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["25%", "-100%"]);
 
   return (
-    <section className="2xl:py-[170px] xl:py-[140px] w-full overflow-hiddenh-[200vh]">
-      <Container>
+    <section
+      ref={targetRef}
+      className="2xl:py-[170px] xl:py-[140px] w-full overflow-hidden h-[200vh]"
+    >
+      <Container className="sticky top-0 z-50">
         <TitleContentCols
           classNameTitle="!text-[45px] !-tracking-[0.45] max-w-[50%] w-full"
           titleFirstRow="Access Our Expertise"
@@ -48,7 +51,7 @@ export const FlexExpertise: FC<IFlexExpertise> = () => {
           btnTitle="Read More"
         />
 
-        <div className="relative max-w-[450px] w-full h-[510px] aspect-square">
+        <div className="relative max-w-[450px] w-full h-[510px] aspect-square overflow-hidden">
           <Image
             className="rounded-lg object-cover w-full"
             src="/images/flex-expertise-carousel.jpg"

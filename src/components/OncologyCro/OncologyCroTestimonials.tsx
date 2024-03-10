@@ -11,13 +11,13 @@ export interface IOncologyCroTestimonials {}
 
 export const OncologyCroTestimonials: FC<IOncologyCroTestimonials> = () => {
   return (
-    <Section className="xl:py-[300px]">
+    <Section className="xl:!py-[300px]">
       <Container>
         <motion.div
           initial={{ x: "-120%", y: "-50%" }}
           animate={{ x: "-50%", y: "-50%" }}
           transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
-          className="absolute top-1/2 left-0 bg-[var(--clr-light-light-gold)] border-[142px] border-[var(--clr-light-blue)] rounded-full aspect-[1/1] h-full"
+          className="absolute top-1/2 left-0 max-w-[880px] w-full border-[142px] border-[var(--clr-light-blue)] rounded-full aspect-[1/1] h-full"
         />
 
         <div className="relative flex gap-x-20">

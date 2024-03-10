@@ -23,7 +23,10 @@ export const ImageContentSection: FC<IImageContentSection> = ({
         <div className="flex items-center gap-x-20">
           <InView
             animateFrom="left"
-            className={cn("relative w-full aspect-square", classNameImgWrap)}
+            className={cn(
+              "relative w-full aspect-square overflow-hidden",
+              classNameImgWrap
+            )}
           >
             <Image
               className="rounded-lg object-cover w-full"

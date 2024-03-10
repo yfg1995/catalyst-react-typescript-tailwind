@@ -43,7 +43,7 @@ export const FlexHero: FC<IFlexHero> = () => {
 
           <InView
             animateFrom="right"
-            className="relative max-w-[640px] w-full h-[455px] aspect-[1.41] right-[-130px]"
+            className="relative max-w-[640px] w-full h-[455px] aspect-[1.41] right-[-130px] overflow-hidden"
           >
             <Image
               className="object-cover w-full rounded-[20px]"

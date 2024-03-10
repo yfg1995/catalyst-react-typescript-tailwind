@@ -38,10 +38,7 @@ export const MainNavFullMenuOncology: FC = () => {
   return (
     <div className="w-full pt-10 pb-16 border-b-2 border-b-slate-200 md:border-0 mb-[20px]">
       <Container>
-        <AnimationOpacityMotion
-          duration={0.7}
-          className="flex justify-between flex-col gap-y-[80px] md:flex-row md:gap-14"
-        >
+        <AnimationOpacityMotion className="flex justify-between flex-col gap-y-[80px] md:flex-row md:gap-14">
           <TitleDescriptionSvg options={developmentPhaseData} />
 
           <MenuImgContent options={developmentPhaseImgData} />

@@ -91,7 +91,7 @@ export const LatestReleases: FC<ILatestReleases> = () => {
               href={slide.path}
               className="flex flex-col items-start p-[clamp(24px,2.08vw,40px)] h-full"
             >
-              <div className="relative w-full h-[300px] aspect-[1.67] mb-6">
+              <div className="relative w-full h-[300px] aspect-[1.67] mb-6 overflow-hidden">
                 <Image
                   className="rounded-lg"
                   src={slide.imgSrc}

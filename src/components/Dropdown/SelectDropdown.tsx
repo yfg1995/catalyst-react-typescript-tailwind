@@ -64,14 +64,14 @@ export const SelectDropdown: FC<ISelect> = ({
       {toggle && (
         <div
           className={cn(
-            "absolute top-full left-0 border border-slate-400 w-full -mt-[1px] z-10 rounded-bl-lg  overflow-x-auto max-h-[var(--item-height)] divide-y divide-y-slate-400 duration-500 ease-in-out",
+            "absolute top-full left-0 border border-slate-400 w-full -mt-[1px] z-10 rounded-bl-lg overflow-x-auto max-h-[var(--item-height)] divide-y divide-y-slate-400",
             className
           )}
           style={{ "--item-height": `${itemHeight * 5}px` } as CSSProperties}
         >
           {options.map((option) => (
             <div
-              className="flex justify-center items-center cursor-pointer transition hover:!bg-[var(--bg-primary)] hover:text-white"
+              className="flex justify-center items-center cursor-pointer transition hover:!bg-[var(--bg-primary)] hover:text-white select-none duration-300 ease-in-out"
               key={option.id}
               style={{
                 color: selectedId === option.id ? "white" : "",

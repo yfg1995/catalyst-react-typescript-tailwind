@@ -11,55 +11,20 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/catalyst-flex/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/catalyst-flex/page.js"
-    ],
     "/oncology-cro/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/oncology-cro/page.js"
-    ],
-    "/oncology-cro/contact-oncology/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/oncology-cro/contact-oncology/page.js"
     ],
     "/contact-us/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/contact-us/page.js"
     ],
-    "/oncology-cro/development-phase/page": [
+    "/catalyst-flex/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/oncology-cro/development-phase/page.js"
-    ],
-    "/oncology-cro/full-service-cro/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/oncology-cro/full-service-cro/page.js"
-    ],
-    "/our-purpose/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/our-purpose/page.js"
-    ],
-    "/our-board/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/our-board/page.js"
-    ],
-    "/our-partners/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/our-partners/page.js"
-    ],
-    "/our-people/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/our-people/page.js"
+      "static/chunks/app/catalyst-flex/page.js"
     ]
   }
 }
