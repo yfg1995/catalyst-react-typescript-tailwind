@@ -1,6 +1,5 @@
 {
   "/page": "app/page.js",
   "/oncology-cro/page": "app/oncology-cro/page.js",
-  "/contact-us/page": "app/contact-us/page.js",
   "/catalyst-flex/page": "app/catalyst-flex/page.js"
 }

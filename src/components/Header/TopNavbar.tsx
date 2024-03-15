@@ -11,7 +11,7 @@ export const TopNavbar: FC = () => {
   const { firstSegment, homepage } = useSegmentPath();
 
   return (
-    <div className="bg-[var(--bg-primary)] text-white w-full relative z-50">
+    <div className="bg-[var(--bg-primary)] text-white w-full relative top-0 z-50">
       <Container className="py-0">
         <div className="flex items-center justify-end">
           <div className="flex items-center [&>*]:px-4 [&>*]:py-1 [&>*]:max-w-[160px] [&>*]:w-full">

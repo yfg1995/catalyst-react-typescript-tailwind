@@ -13,7 +13,7 @@ export const Main: FC<IMain> = ({ children, className }) => {
   const { isHovered } = useDropdownActiveState();
 
   return (
-    <main className={cn("overflow-hidden", className)}>
+    <main className={cn("flex-1", className)}>
       <AnimatePresence>
         {isHovered && (
           <motion.div

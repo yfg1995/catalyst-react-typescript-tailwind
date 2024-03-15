@@ -45,16 +45,16 @@ export const CardImage: FC<ICardImage> = ({
       href={path}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative flex h-full flex-col items-start rounded-[20px] shadow-normal bg-white px-[clamp(48px,2.5vw,24px)] pb-[clamp(20px,2.6vw,50px)] pt-[clamp(40px,3.65vw,70px)] max-w-[550px] w-full"
+      className="group relative flex h-full flex-col items-start rounded-[20px] shadow-normal bg-white px-[clamp(48px,2.5vw,24px)] pb-[clamp(20px,2.6vw,50px)] pt-[clamp(60px,4.69vw,90px)] max-w-[550px] w-full"
     >
       <div
-        className="absolute top-0 -translate-y-[30%] rounded-full border-4 overflow-hidden max-w-[100px] w-full duration-300 ease-in-out group-hover:scale-110"
+        className="absolute top-0 -translate-y-[40%] mb-6 rounded-full border-4 overflow-hidden max-w-[100px] w-full duration-300 ease-in-out group-hover:scale-110"
         style={{ borderColor: borderColor }}
       >
         <img className="w-full" src={imgSrc} alt="" loading="lazy" />
       </div>
 
-      <div className="my-6 text-[clamp(24px,2.08vw,40px)] leading-tight tracking-tight">
+      <div className="mb-6 text-[clamp(24px,2.08vw,40px)] leading-tight tracking-tight">
         {title}
       </div>
 
