@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { CarouselStatisticsCard } from "../CarouselStatisticsCard";
 import { Container } from "../Container";
 import { TitleContentCols } from "../TitleContentCols";
@@ -34,22 +34,46 @@ const expertiseData = [
 ];
 
 export const FlexExpertise: FC<IFlexExpertise> = () => {
-  const targetRef = useRef(null);
+  const targetRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    // offset: ["start end", "end start"],
   });
+
+  const [containerWidth, setContainerWidth] = useState<number | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (targetRef.current) {
+        setContainerWidth(targetRef.current.offsetWidth);
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  useEffect(() => {
+    const updateX = () => {
+      x.set(`-${window.innerWidth * 0.32}px`);
+    };
+    updateX();
+    window.addEventListener("resize", updateX);
+    return () => window.removeEventListener("resize", updateX);
+  }, []);
 
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", `-${window.innerWidth * 0.4}px`]
+    ["-120%", `-${window.innerWidth * 0.32}px`]
   );
 
   return (
     <section
       ref={targetRef}
-      className="2xl:py-[170px] xl:py-[140px] w-full overflow-hidden h-[200vh]"
+      className="2xl:py-[170px] xl:py-[140px] w-full h-[300vh]"
     >
       <div className="sticky top-0 z-50 h-screen overflow-hidden">
         <Container>
@@ -60,20 +84,22 @@ export const FlexExpertise: FC<IFlexExpertise> = () => {
             btnTitle="Read More"
           />
 
-          <div className="relative max-w-[450px] w-full aspect-square overflow-hidden">
-            <Image
-              className="rounded-lg object-cover w-full"
-              src="/images/flex-expertise-carousel.jpg"
-              alt=""
-              fill
-              sizes="(min-width: 768px) 100vw, 100%"
-              priority
-            />
-          </div>
+          <div className="flex items-center">
+            <div className="relative max-w-[450px] w-full aspect-square overflow-hidden">
+              <Image
+                className="rounded-lg object-cover w-full"
+                src="/images/flex-expertise-carousel.jpg"
+                alt=""
+                fill
+                sizes="(min-width: 768px) 100vw, 100%"
+                priority
+              />
+            </div>
 
-          <motion.div style={{ x }} className="flex gap-x-5">
-            <CarouselStatisticsCard card={expertiseData} />
-          </motion.div>
+            <motion.div style={{ x }} className="flex gap-x-5">
+              <CarouselStatisticsCard card={expertiseData} />
+            </motion.div>
+          </div>
         </Container>
       </div>
     </section>

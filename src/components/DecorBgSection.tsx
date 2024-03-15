@@ -39,7 +39,7 @@ export const DecorBgSection: FC<IDecorBgSection> = ({
     >
       <div
         className={cn(
-          "absolute top-auto bottom-[171px] aspect-[2767/3604] w-[144%] overflow-hidden",
+          "absolute top-auto bottom-[22%] aspect-[2767/3604] w-[144%] overflow-hidden",
           rightCircle ? "left-0" : "right-0"
         )}
       >

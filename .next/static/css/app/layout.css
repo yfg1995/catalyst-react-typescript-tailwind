@@ -547,8 +547,8 @@ video {
 .bottom-0 {
   bottom: 0px;
 }
-.bottom-\[171px\] {
-  bottom: 171px;
+.bottom-\[22\%\] {
+  bottom: 22%;
 }
 .bottom-auto {
   bottom: auto;
@@ -745,20 +745,17 @@ video {
 .h-6 {
   height: 1.5rem;
 }
-.h-\[200vh\] {
-  height: 200vh;
-}
 .h-\[300px\] {
   height: 300px;
+}
+.h-\[300vh\] {
+  height: 300vh;
 }
 .h-\[455px\] {
   height: 455px;
 }
 .h-\[50px\] {
   height: 50px;
-}
-.h-\[510px\] {
-  height: 510px;
 }
 .h-\[512px\] {
   height: 512px;

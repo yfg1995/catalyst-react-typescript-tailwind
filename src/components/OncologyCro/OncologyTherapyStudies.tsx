@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useRef } from "react";
+import { FC, useRef, useEffect, useState } from "react";
 import { CarouselStatisticsCard } from "../CarouselStatisticsCard";
 import { Container } from "../Container";
 import { TitleContentCols } from "../TitleContentCols";
@@ -37,19 +37,34 @@ export const OncologyTherapyStudies: FC<IOncologyTherapyStudies> = () => {
   const targetRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    // offset: ["start end", "end start"],
   });
+
+  const [containerWidth, setContainerWidth] = useState<number | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (targetRef.current) {
+        setContainerWidth(targetRef.current.offsetWidth);
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", `-${window.innerWidth * 0.4}px`]
+    ["-120%", `-${(containerWidth ?? 0) * 0.32}px`]
   );
 
   return (
     <section
       ref={targetRef}
-      className="2xl:py-[170px] xl:py-[140px] w-full h-[200vh]"
+      className="2xl:py-[170px] xl:py-[140px] w-full h-[300vh]"
     >
       <div className="sticky top-0 z-50 h-screen overflow-hidden">
         <Container>
