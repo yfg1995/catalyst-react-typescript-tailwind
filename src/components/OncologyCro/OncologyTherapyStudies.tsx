@@ -79,7 +79,7 @@ export const OncologyTherapyStudies: FC<IOncologyTherapyStudies> = () => {
           <div className="flex items-center">
             <div className="relative max-w-[450px] w-full aspect-square overflow-hidden">
               <Image
-                className="rounded-lg object-cover w-full"
+                className="rounded-lg object-cover size-full"
                 src="/images/oncology-therapy-studies-carousel.jpg"
                 alt=""
                 fill

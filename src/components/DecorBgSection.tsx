@@ -51,10 +51,10 @@ export const DecorBgSection: FC<IDecorBgSection> = ({
         />
       </div>
 
-      <ScrollComponent
+      <div
         className={cn(
           "absolute top-full w-[1320px] aspect-[2] h-auto bottom-0",
-          rightCircle ? "circle-br right-0" : "circle-bl left-0"
+          rightCircle ? "right-0" : "left-0"
         )}
       >
         <div
@@ -64,7 +64,7 @@ export const DecorBgSection: FC<IDecorBgSection> = ({
           )}
           style={{ background: bgColor }}
         />
-      </ScrollComponent>
+      </div>
 
       {children}
     </Section>
