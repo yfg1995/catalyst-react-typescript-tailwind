@@ -1,4 +1,6 @@
 import { useState, useEffect, FC, useRef } from "react";
+import { Button } from "./Button";
+import { Container } from "./Container";
 // import { v4 as uuidv4 } from "uuid"; - string
 
 const BASE_URL = "http://localhost:4000";
@@ -101,11 +103,15 @@ export const UserList: FC = () => {
       method: "DELETE",
     })
       .then(() => {
-        console.log("Deleting post", postId);
+        setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
       })
       .finally(() => {
         console.log("Deleted post", postId);
       });
+  };
+
+  const capitalizeFirstLetter = (letter: string) => {
+    return letter.charAt(0).toUpperCase() + letter.slice(1);
   };
 
   if (isLoading) {
@@ -116,44 +122,54 @@ export const UserList: FC = () => {
     <>
       {error && JSON.stringify(error)}
       {!isLoading && !error && posts && (
-        <>
-          <ul>
+        <Container>
+          <div className="flex flex-wrap w-full justify-between items-center gap-4">
             {posts.map((post) => (
-              <li key={post.id} onClick={() => onDeletePost(post.id)}>
-                <strong>{post.id} </strong>
-                <strong>Title: {post.title}</strong>
-                <br />
-                Description: {post.body}
-              </li>
-            ))}
-          </ul>
+              <div
+                className="flex items-center p-4 gap-x-4 w-[45%] border-2 rounded-3xl"
+                key={post.id}
+              >
+                <div>
+                  <div className="text-lg font-bold mb-1">
+                    {post.id}. {capitalizeFirstLetter(post.title)}
+                  </div>
 
-          <form onSubmit={handleFormSubmit} className="mt-3">
-            <label>
-              Title:
-              <input
-                required
-                type="text"
-                value={formData.title}
-                onChange={handleInputChange("title")}
-              />
-            </label>
-            <br />
-            <label>
-              Description:
-              <input
-                required
-                type="text"
-                value={formData.body}
-                onChange={handleInputChange("body")}
-              />
-            </label>
-            <br />
-            <button className="border p-1 font-bold mt-1" type="submit">
-              Create Post
-            </button>
+                  <div>{capitalizeFirstLetter(post.body)}</div>
+                </div>
+
+                <Button title="Delete" onClick={() => onDeletePost(post.id)} />
+              </div>
+            ))}
+          </div>
+
+          <form onSubmit={handleFormSubmit} className="flex my-10">
+            <div className="flex items-center [&>*]:mx-2">
+              <label>
+                Title:
+                <input
+                  required
+                  className="border outline-none ml-1.5 px-1"
+                  type="text"
+                  value={formData.title}
+                  onChange={handleInputChange("title")}
+                />
+              </label>
+
+              <label>
+                Description:
+                <input
+                  required
+                  className="border outline-none ml-1.5 px-1"
+                  type="text"
+                  value={formData.body}
+                  onChange={handleInputChange("body")}
+                />
+              </label>
+            </div>
+
+            <Button title="Create Post" type="submit" className="ml-4" />
           </form>
-        </>
+        </Container>
       )}
     </>
   );
