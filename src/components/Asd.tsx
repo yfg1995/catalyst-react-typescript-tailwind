@@ -6,7 +6,6 @@ import { Container } from "./Container";
 const BASE_URL = "http://localhost:4000";
 
 interface IPost {
-  userId: number;
   id: number;
   title: string;
   body: string;
@@ -132,7 +131,7 @@ export const UserList: FC = () => {
                 key={post.id}
                 className="flex flex-col justify-center items-start p-8 gap-x-4 w-[48%] border-2 rounded-3xl h-auto"
               >
-                <div className="mb-4 h-full">
+                <div className="mb-8">
                   <div className="text-lg font-bold mb-1">
                     {capitalizeFirstLetter(post.title)}
                   </div>
@@ -143,7 +142,7 @@ export const UserList: FC = () => {
                 <Button
                   title="Delete"
                   onClick={() => onDeletePost(post.id)}
-                  className="mt-auto"
+                  className="mt-auto ml-auto"
                 />
               </div>
             ))}
