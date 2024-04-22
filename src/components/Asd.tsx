@@ -6,6 +6,7 @@ import { Container } from "./Container";
 const BASE_URL = "http://localhost:4000";
 
 interface IPost {
+  userId: number;
   id: number;
   title: string;
   body: string;
@@ -74,11 +75,15 @@ export const UserList: FC = () => {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { title, body } = formData;
+    const userId = 10;
+    const id = generateRandomUniqueId();
 
     try {
       const response = await fetch(`${BASE_URL}/posts`, {
         method: "POST",
         body: JSON.stringify({
+          userId: userId,
+          id,
           title,
           body,
         }),
@@ -92,7 +97,7 @@ export const UserList: FC = () => {
       }
 
       const newPost = await response.json();
-      newPost.id = generateRandomUniqueId();
+
       setPosts((prevPosts) => [...prevPosts, newPost]);
       setFormData({ title: "", body: "" });
     } catch (error) {
