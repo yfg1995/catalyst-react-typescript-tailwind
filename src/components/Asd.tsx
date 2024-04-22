@@ -1,7 +1,7 @@
 import { useState, useEffect, FC, useRef } from "react";
 import { Button } from "./Button";
 import { Container } from "./Container";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 const BASE_URL = "http://localhost:4000";
 
@@ -11,6 +11,9 @@ interface IPost {
   title: string;
   body: string;
 }
+
+const generateRandomUniqueId = () =>
+  Date.now() + Math.floor(Math.random() * 1000000);
 
 export const UserList: FC = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
@@ -90,7 +93,7 @@ export const UserList: FC = () => {
       }
 
       const newPost = await response.json();
-      newPost.id = uuidv4();
+      newPost.id = generateRandomUniqueId();
       setPosts((prevPosts) => [...prevPosts, newPost]);
       setFormData({ title: "", body: "" });
     } catch (error) {
