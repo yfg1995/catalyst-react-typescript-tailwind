@@ -3,7 +3,6 @@ import { FC, PropsWithChildren } from "react";
 export interface ILabel extends PropsWithChildren {
   title: string;
   htmlFor: string;
-  autocomplete?: string;
 }
 
 export const Label: FC<ILabel> = ({ title, htmlFor, children }) => {

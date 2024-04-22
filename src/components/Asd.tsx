@@ -1,7 +1,7 @@
 import { useState, useEffect, FC, useRef } from "react";
 import { Button } from "./Button";
 import { Container } from "./Container";
-// import { v4 as uuidv4 } from "uuid"; - string
+import { v4 as uuidv4 } from "uuid";
 
 const BASE_URL = "http://localhost:4000";
 
@@ -90,7 +90,7 @@ export const UserList: FC = () => {
       }
 
       const newPost = await response.json();
-      newPost.id = posts.length + 1;
+      newPost.id = uuidv4();
       setPosts((prevPosts) => [...prevPosts, newPost]);
       setFormData({ title: "", body: "" });
     } catch (error) {
@@ -110,8 +110,8 @@ export const UserList: FC = () => {
       });
   };
 
-  const capitalizeFirstLetter = (letter: string) => {
-    return letter.charAt(0).toUpperCase() + letter.slice(1);
+  const capitalizeFirstLetter = (content: string) => {
+    return content.charAt(0).toUpperCase() + content.slice(1);
   };
 
   if (isLoading) {
@@ -123,21 +123,25 @@ export const UserList: FC = () => {
       {error && JSON.stringify(error)}
       {!isLoading && !error && posts && (
         <Container>
-          <div className="flex flex-wrap w-full justify-between items-center gap-4">
+          <div className="flex flex-wrap w-full justify-between items-center gap-y-4 h-full">
             {posts.map((post) => (
               <div
-                className="flex items-center p-4 gap-x-4 w-[45%] border-2 rounded-3xl"
                 key={post.id}
+                className="flex flex-col justify-center items-start p-8 gap-x-4 w-[48%] border-2 rounded-3xl h-auto"
               >
-                <div>
+                <div className="mb-4 h-full">
                   <div className="text-lg font-bold mb-1">
-                    {post.id}. {capitalizeFirstLetter(post.title)}
+                    {capitalizeFirstLetter(post.title)}
                   </div>
 
                   <div>{capitalizeFirstLetter(post.body)}</div>
                 </div>
 
-                <Button title="Delete" onClick={() => onDeletePost(post.id)} />
+                <Button
+                  title="Delete"
+                  onClick={() => onDeletePost(post.id)}
+                  className="mt-auto"
+                />
               </div>
             ))}
           </div>
