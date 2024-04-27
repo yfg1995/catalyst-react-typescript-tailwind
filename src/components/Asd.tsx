@@ -1,4 +1,4 @@
-import { useState, useEffect, FC, useRef } from "react";
+import { useState, useEffect, FC, useRef, ChangeEvent } from "react";
 import { Button } from "./Button";
 import { Container } from "./Container";
 // import { v4 as uuidv4 } from "uuid";
@@ -15,10 +15,15 @@ interface IPost {
 const generateRandomUniqueId = () =>
   Date.now() + Math.floor(Math.random() * 1000000);
 
+const capitalizeFirstLetter = (content: string) => {
+  return content.charAt(0).toUpperCase() + content.slice(1);
+};
+
 export const UserList: FC = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<null | string>(null);
+  const [editingPostId, setEditingPostId] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -27,6 +32,7 @@ export const UserList: FC = () => {
   const abortControllerRef = useRef<AbortController | null>(null);
   // Allows you to call the abort function on it and then cancel a request and...
 
+  // MARK: GET
   useEffect(() => {
     const fetchPosts = async () => {
       abortControllerRef.current?.abort();
@@ -62,9 +68,12 @@ export const UserList: FC = () => {
     fetchPosts();
   }, []);
 
+  // MARK: HANDLE FUNC
   const handleInputChange =
     (inputName: keyof Omit<IPost, "id" | "userId">) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (
+      e: React.ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+    ) => {
       const { value } = e.target;
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -72,6 +81,7 @@ export const UserList: FC = () => {
       }));
     };
 
+  // MARK: POST
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { title, body } = formData;
@@ -105,6 +115,57 @@ export const UserList: FC = () => {
     }
   };
 
+  const handleEditClick = (postId: number) => {
+    setEditingPostId(postId);
+    const postToEdit = posts.find((post) => post.id === postId);
+    if (postToEdit) {
+      setFormData({
+        title: postToEdit.title,
+        body: postToEdit.body,
+      });
+    }
+  };
+
+  // MARK: PUT
+  const handleEditSubmit = async (postId: number) => {
+    if (!editingPostId) return;
+
+    const { title, body } = formData;
+
+    try {
+      const response = await fetch(`${BASE_URL}/posts/${postId}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          userId: 10,
+          id: postId,
+          title,
+          body,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to edit post");
+      }
+
+      const editedPost = await response.json();
+
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post.id === editedPost.id ? { ...post, ...editedPost } : post
+        )
+      );
+
+      setEditingPostId(null);
+      setFormData({ title: "", body: "" });
+    } catch (error) {
+      console.error("Error editing post:", error);
+    }
+  };
+
+  // MARK: DELETE
   const onDeletePost = (postId: number) => {
     fetch(`${BASE_URL}/posts/${postId}`, {
       method: "DELETE",
@@ -117,10 +178,6 @@ export const UserList: FC = () => {
       });
   };
 
-  const capitalizeFirstLetter = (content: string) => {
-    return content.charAt(0).toUpperCase() + content.slice(1);
-  };
-
   if (isLoading) {
     return <div className="text-xl font-bold">Loading...</div>;
   }
@@ -130,25 +187,64 @@ export const UserList: FC = () => {
       {error && JSON.stringify(error)}
       {!isLoading && !error && posts && (
         <Container>
-          <div className="flex flex-wrap w-full justify-between items-center gap-y-4 h-full">
+          <div className="flex flex-wrap justify-between items-center gap-4 h-full">
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="flex flex-col justify-center items-start p-8 gap-x-4 w-[48%] border-2 rounded-3xl h-auto"
+                className="flex flex-col justify-center items-end p-8 gap-x-4 w-[48%] border-2 rounded-3xl h-full"
+                style={{ flex: "0 1 48%" }}
               >
-                <div className="mb-8">
-                  <div className="text-lg font-bold mb-1">
-                    {capitalizeFirstLetter(post.title)}
-                  </div>
+                <div className="flex flex-col justify-center items-start w-full [&>*]:w-full">
+                  {editingPostId === post.id ? (
+                    <>
+                      <input
+                        type="text"
+                        value={formData.title}
+                        onChange={handleInputChange("title")}
+                        className="border outline-none px-1 mb-2 font-bold"
+                      />
+                      <textarea
+                        value={formData.body}
+                        onChange={handleInputChange("body")}
+                        className="border outline-none p-1 h-[100px] resize-none mb-8"
+                      />
 
-                  <div>{capitalizeFirstLetter(post.body)}</div>
+                      <div className="flex items-center justify-end mt-auto [&>*]:mx-2">
+                        <Button
+                          title="Save Changes"
+                          onClick={() => handleEditSubmit(post.id)}
+                        />
+
+                        <Button
+                          title="Cancel"
+                          onClick={() => setEditingPostId(null)}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="text-xl font-bold mb-1">
+                        {capitalizeFirstLetter(post.title)}
+                      </div>
+
+                      <div className="mb-8">
+                        {capitalizeFirstLetter(post.body)}
+                      </div>
+
+                      <div className="flex items-center justify-end mt-auto [&>*]:mx-2">
+                        <Button
+                          title="Edit"
+                          onClick={() => handleEditClick(post.id)}
+                        />
+
+                        <Button
+                          title="Delete"
+                          onClick={() => onDeletePost(post.id)}
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
-
-                <Button
-                  title="Delete"
-                  onClick={() => onDeletePost(post.id)}
-                  className="mt-auto ml-auto"
-                />
               </div>
             ))}
           </div>
@@ -161,7 +257,7 @@ export const UserList: FC = () => {
                   required
                   className="border outline-none ml-1.5 px-1"
                   type="text"
-                  value={formData.title}
+                  value={editingPostId ? "" : formData.title}
                   onChange={handleInputChange("title")}
                 />
               </label>
@@ -172,7 +268,7 @@ export const UserList: FC = () => {
                   required
                   className="border outline-none ml-1.5 px-1"
                   type="text"
-                  value={formData.body}
+                  value={editingPostId ? "" : formData.body}
                   onChange={handleInputChange("body")}
                 />
               </label>
